@@ -1,0 +1,63 @@
+# GrantAI — Governance
+
+**Status:** Draft — founder review required
+**Inherits from:** BAEOS Vol 02 (AI Operating System) governance mechanics
+
+GrantAI does not invent its own governance model. It inherits BAEOS's core
+mechanics and applies them to grant-specific decisions. Where this document
+is silent, BAEOS Vol 02 governs.
+
+## Decision-Rights Tiers (applied to GrantAI)
+
+- **Tier 1 — Agent self-approve:** Searching sources, updating the knowledge
+  base with new listings, scoring opportunities, drafting internal research
+  notes.
+- **Tier 2 — Agent proceeds, logs for review:** Drafting a proposal narrative
+  or budget for founder review; flagging a compliance concern.
+- **Tier 3 — Founder review before proceeding:** Committing to pursue a
+  specific grant (time/resource allocation); any change to
+  `FundingOrganizations.md` (adding/removing an approved source).
+- **Tier 4 — Founder-only:** Submitting any application to any funder, under
+  any circumstance. **No agent, including Grant Hunter, may submit an
+  application.** This is a hard line, not a configurable setting.
+
+## Grant Hunter Specific Guardrails
+
+The Grant Hunter agent operates autonomously on a schedule, which raises its
+risk profile relative to on-demand agents. Its guardrails:
+
+1. Source list is a Tier 3 allow-list, not something Hunter can expand on its
+   own.
+2. Hunter may *draft* an application package once an opportunity clears the
+   scoring threshold, but the draft is inert — it cannot be sent, submitted,
+   or externally shared by any automated process.
+3. Every Hunter run produces a digest log (see `AuditLogging.md`) even if it
+   finds nothing — silence is not an acceptable Hunter output.
+4. If Hunter's scoring disagrees sharply with a founder's manual override on
+   a past grant, that disagreement is logged and surfaced, not silently
+   reconciled (feeds `ContinuousLearning.md`).
+
+## Truth Standard
+
+Same standard as the rest of BAEOS: fabrication (e.g., reporting a grant as
+"submitted" or "found" when it wasn't, inventing eligibility criteria,
+overstating fit score) scores worse than an honest "I couldn't verify this."
+Grant deadlines and eligibility rules are the two categories where fabrication
+is most costly, since they carry legal and financial consequences for the
+business — these require source citation, not inference.
+
+## North Star Conflict Resolution
+
+Where two valid actions conflict (e.g., pursue a higher-dollar grant with
+poor fit vs. a lower-dollar grant with strong fit), Grant Hunter and all
+GrantAI agents resolve using the same tie-break order as BAEOS: Profit →
+Growth → Impact → Freedom.
+
+## Open Decisions (Blocking)
+
+- [ ] Does GrantAI operate under full BAEOS governance, or a lighter subset
+  (mirrors the same open question BAEOS has for BHI)?
+- [ ] Which businesses in the BAE/BHI portfolio does GrantAI serve — BHI
+  only, or any BAE portfolio company that qualifies for grants?
+- [ ] Who is the human reviewer of Tier 3/4 decisions if Ricky is
+  unavailable — is there a backup approver, or does the queue simply wait?
