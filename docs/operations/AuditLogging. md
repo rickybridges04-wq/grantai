@@ -1,0 +1,47 @@
+# AuditLogging
+
+**Status:** Draft — founder review required
+**Phase:** 7 — Operations
+
+## Purpose
+
+Defines what gets logged, where, and why — the audit trail that makes every
+"never silently" rule from earlier phases actually checkable rather than
+just promised. Backed by the `audit_log` table defined in
+`DatabaseSchema.md`.
+
+## What Gets Logged
+
+- **Every Grant Hunter run** — sources checked, new listings found,
+  eligible/ineligible counts with reasons, scored counts, drafts prepared,
+  any errors — including zero-result runs (per the "silence is not
+  acceptable" rule in `GrantHunter-Agent.md`)
+- **Every eligibility determination** — not just the eligible ones; ruled-
+  out opportunities are logged with reason, per `EligibilityEngine.md`
+- **Every founder override** — of an eligibility call, a score, or a draft
+  decision — feeds `ContinuousLearning.md`
+- **Every source allow-list change** — addition, removal, activation,
+  suspension of anything in `FundingOrganizations.md` — who approved it and
+  when (Tier 3 actions are logged even though they're founder-approved,
+  since the trail matters for later review)
+- **Truth Standard incidents** — any fabrication or false-success report
+  from any agent, logged the same way BAEOS already tracks its documented
+  agent fabrication incidents
+
+## What Doesn't Get Logged Here
+
+- Routine successful reads (checking a score, viewing a draft) — this is an
+  audit trail for actions and decisions, not a full access log
+
+## Digest Format (Grant Hunter runs specifically)
+
+Each run produces a human-readable digest, not just raw log rows — this is
+what `StandardOperatingProcedures.md`'s weekly routine actually reads.
+Format: sources checked / new found / eligible / scored / drafted / errors,
+in that order, every time, so digests are scannable at a glance across
+weeks.
+
+## Open Decisions
+
+- [ ] Retention period for audit log data — no expiry, or archived after
+  some period once volume grows
