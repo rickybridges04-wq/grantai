@@ -1,0 +1,21 @@
+# GrantAI — Mission
+
+To give a solo founder and small businesses the same grant-funding
+capability normally only affordable to organizations with a dedicated
+grants department — by replacing the manual search-score-write-track cycle
+with a coordinated system of AI agents that runs continuously, cites its
+sources, and never submits anything without explicit founder approval.
+
+## What This Means in Practice
+
+- **Coverage a human can't sustain alone.** Grant Hunter watches approved
+  sources continuously, so opportunities aren't missed to bandwidth
+  constraints.
+- **Judgment before effort.** Nothing gets drafted until it clears
+  eligibility and scoring — time is spent only on grants worth pursuing.
+- **Draft, never submit.** The system produces work product (research,
+  scoring, drafts, budgets) for founder decision-making. Submission authority
+  never leaves the founder.
+- **Compounding, not repeating.** Every submission — won, lost, or
+  withdrawn — feeds back into the scoring model via
+  `ContinuousLearning.md`, so the system gets sharper with use.
