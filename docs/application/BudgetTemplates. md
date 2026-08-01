@@ -1,0 +1,42 @@
+# BudgetTemplates
+
+**Status:** Draft — founder review required
+**Phase:** 5 — Application System
+
+## Purpose
+
+Holds the budget structures `GrantWriter-Agent` populates and
+`DocumentGeneration.md` formats to funder spec. Kept separate from proposal
+narrative templates because budget formats vary by funder in ways narrative
+structure often doesn't (line-item categories, indirect cost rate rules,
+matching-fund requirements).
+
+## Standard Budget Categories
+
+1. **Personnel** — wages/salary tied to the project
+2. **Materials/supplies**
+3. **Equipment**
+4. **Travel** (if applicable)
+5. **Contractual/subcontractor costs**
+6. **Indirect costs** — flat rate or negotiated rate, per funder rules
+7. **Matching funds** (if required) — cash match vs. in-kind match,
+   tracked separately since funders often treat them differently
+
+## Budget Narrative Requirement
+
+Every budget line ties back to a sentence or two in the proposal's Budget
+Narrative section (see `ProposalTemplates.md` section 6) — numbers without
+justification are a common rejection reason, so Writer should never
+generate a budget total without matching narrative text explaining it.
+
+## Reconciliation Check
+
+`GrantReviewer-Agent` checks that budget totals here match whatever figures
+appear in the narrative — this file and the narrative must never disagree
+by the time a draft reaches `review-passed` status.
+
+## Open Decisions
+
+- [ ] Confirm whether matching funds are realistically available for
+  grants that require them — this affects which opportunities are even
+  worth `MatchingAlgorithm.md` scoring highly
