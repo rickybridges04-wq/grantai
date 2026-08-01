@@ -1,0 +1,52 @@
+# Metrics
+
+**Status:** Draft — founder review required
+**Phase:** 7 — Operations (final file — completes the GrantAI roadmap)
+
+## Purpose
+
+Defines the rollup numbers that answer "is GrantAI actually working" at a
+glance — what `ExecutiveGrantAdvisor-Agent` and the Monthly Routine in
+`StandardOperatingProcedures.md` both surface.
+
+## Core Metrics
+
+**Volume**
+- Opportunities discovered (by category, by source)
+- Opportunities scoring High (70+) vs. Moderate vs. Low
+
+**Pipeline**
+- Drafts prepared (Hunter-triggered vs. on-demand)
+- Reviewer pass rate
+- Drafts reaching founder-review vs. stalling in revision
+
+**Outcomes**
+- Applications submitted (founder-confirmed, per `ApplicationTracker.md`)
+- Win rate (awarded / submitted)
+- Total funding pursued vs. total funding awarded
+
+**System Health**
+- Grant Hunter run success rate (per `AuditLogging.md` digests — did the
+  scheduled sweep actually complete, and did it error on any source)
+- Score-to-outcome correlation (are high-scored opportunities actually
+  winning more — the core signal `ContinuousLearning.md` uses to
+  recalibrate)
+
+## What "Good" Looks Like
+
+Not defined yet — deliberately. A target win rate or volume goal set before
+a single real sweep has run would be a guess dressed up as a benchmark.
+Recommend setting real targets after the first full quarter of data.
+
+## This Completes the GrantAI Roadmap
+
+All 7 phases are now drafted: Foundation, Agent Specifications, Knowledge
+Base, Intelligence Engine, Application System, Engineering, and Operations.
+The system is fully specified on paper — what's left is founder review of
+the open decisions flagged throughout, activating real sources in
+`FundingOrganizations.md`, and building the actual Supabase/Lovable
+implementation per `docs/engineering/`.
+
+## Open Decisions
+
+- [ ] Set real win-rate/volume targets after the first quarter of live data
