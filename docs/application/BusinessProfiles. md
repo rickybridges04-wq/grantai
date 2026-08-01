@@ -1,0 +1,45 @@
+# BusinessProfiles
+
+**Status:** Draft — founder review required
+**Phase:** 5 — Application System
+
+## Purpose
+
+Holds the structured profile(s) `EligibilityEngine.md`,
+`MatchingAlgorithm.md`, and `GrantWriter-Agent` all reference. This is the
+single source of truth for "who is applying" — every other file references
+it rather than restating business facts inline.
+
+## Profile Schema
+
+```
+- Business name:
+- Entity type: (sole proprietorship, LLC, S-corp, etc.)
+- Industry/trade classification:
+- Location(s) served:
+- Years in operation:
+- Employee count:
+- Annual revenue range: (range, not exact figure — used for size-standard
+  eligibility checks, not for narrative)
+- Certifications held: (e.g. minority/veteran/woman-owned, if applicable
+  and if the business holds them — never assumed)
+- Prior grant history: (awarded / applied-not-awarded / none)
+- Key qualifications/differentiators: (for narrative use)
+```
+
+## Notes
+
+- This file should be filled in directly by the founder, not inferred or
+  guessed at by any agent — profile accuracy is foundational to every
+  eligibility and scoring decision downstream, so fabricated or assumed
+  fields here would propagate errors through the entire system
+- If BAE intends to run grants for more than one business (e.g. BHI plus
+  other portfolio companies), this file should hold one profile block per
+  business, each independently referenced by opportunity records
+
+## Open Decisions
+
+- [ ] Confirm which business(es) GrantAI is scoped to serve at launch (this
+  mirrors the open scope question already logged in `GOVERNANCE.md`)
+- [ ] Founder to populate the actual profile data — left blank here
+  intentionally rather than filled with placeholder or assumed values
