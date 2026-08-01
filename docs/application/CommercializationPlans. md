@@ -1,0 +1,41 @@
+# CommercializationPlans
+
+**Status:** Draft — founder review required
+**Phase:** 5 — Application System
+
+## Purpose
+
+Holds reusable narrative content around how funded work translates into
+real business outcomes — the "what happens after the grant" story that
+many funders (especially innovation/economic-development programs) require
+and that `GrantWriter-Agent` draws from rather than re-writing from
+scratch each time.
+
+## What Lives Here
+
+- **Growth/scaling narrative** — how grant-funded work fits into the
+  business's broader growth trajectory
+- **Sustainability plan language** — what continues after the grant period
+  ends (ties directly to `ProposalTemplates.md` section 9)
+- **Prior commercialization outcomes** — if a past grant or investment led
+  to a real, describable business result, that becomes reusable proof
+  points for future applications
+- **Market/impact framing** — how the work benefits customers, the local
+  economy (relevant for BHI's Michiana service area), or the trade more
+  broadly, depending on funder type
+
+## Notes
+
+- This file should be populated with real, founder-confirmed language, not
+  invented outcomes — per the Truth Standard in `GOVERNANCE.md`,
+  overstating commercialization results is exactly the kind of fabrication
+  that scores worse than an honest "this is a new initiative with no track
+  record yet"
+- Foundation-category applications (see `FoundationGrants.md`) tend to lean
+  most heavily on this file, since mission/impact framing matters more
+  there than in Federal/State categories
+
+## Open Decisions
+
+- [ ] Founder to confirm what prior outcomes (if any) are appropriate to
+  reference — left blank rather than assumed
