@@ -1,0 +1,46 @@
+# ContinuousLearning
+
+**Status:** Draft — founder review required
+**Phase:** 7 — Operations
+
+## Purpose
+
+The feedback loop that makes GrantAI get sharper with use rather than
+staying static — referenced throughout earlier phases (`GrantHunter-Agent.md`,
+`ScoringSystem.md`, `QualityControl.md`) as where their respective
+calibration data ultimately feeds.
+
+## What Feeds This Loop
+
+1. **Outcome data** — every `awarded`/`declined`/`withdrawn` entry in
+   `ApplicationTracker.md`, compared against the fit score it was drafted
+   at, per `ScoringSystem.md`
+2. **Founder overrides** — any time a founder's manual judgment disagreed
+   with an agent's automated one (an eligibility override, a score the
+   founder felt was wrong), logged per `GOVERNANCE.md`'s requirement that
+   disagreement be surfaced, not silently reconciled
+3. **Reviewer fail patterns** — recurring reasons `GrantReviewer-Agent`
+   fails a draft, which point at systemic template or knowledge-base gaps
+   rather than one-off writing mistakes
+
+## What This Loop Actually Changes
+
+- `ScoringSystem.md`'s band thresholds (currently 70-point Hunter draft
+  threshold, flagged as provisional there)
+- `MatchingAlgorithm.md`'s factor weighting
+- `ProposalTemplates.md` / `CommercializationPlans.md` content, where
+  recurring Reviewer failures point at gaps
+- `FundingOrganizations.md` source status — a source that never yields
+  anything scoring above Low is a candidate for founder review, not
+  automatic removal (still Tier 3)
+
+## Cadence
+
+Recommend this loop runs on the Monthly Routine defined in
+`StandardOperatingProcedures.md` — frequent enough to catch drift, not so
+frequent that it's reacting to noise from a handful of data points.
+
+## Open Decisions
+
+- [ ] How much outcome history is needed before a threshold change is
+  justified vs. premature
