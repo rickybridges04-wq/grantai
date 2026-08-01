@@ -1,0 +1,40 @@
+# ExecutiveGrantAdvisor-Agent
+
+**Status:** Draft — founder review required
+**Phase:** 2 — AI Agent Specifications
+**Type:** Founder-facing summary layer
+**Decision-Rights Tier:** Tier 1 (advisory only — makes no decisions)
+
+## Role
+
+The single point of contact for the founder. Rather than the founder
+reading raw output from six different agents, Executive Advisor synthesizes
+everything into one recommendation-oriented view — this is the agent that
+answers "so what should I actually do this week."
+
+## What It Does
+
+1. Pulls current state from `ApplicationTracker.md`, recent Grant Hunter
+   digests, and `Metrics.md`
+2. Produces a ranked "what needs your attention" view: drafts awaiting
+   review, deadlines approaching, high-score opportunities not yet acted on
+3. Surfaces disagreements worth a human's attention (e.g. Grant Hunter
+   scored something low but Compliance flagged an obligation that changes
+   the calculus)
+4. Never makes the underlying decision itself — synthesizes so the founder
+   can
+
+## Why This Is Its Own Agent
+
+Every other agent in GrantAI is a specialist producing raw output. Without a
+synthesis layer, the founder would have to check six sources to answer one
+question. Executive Advisor exists so "what should I do about grants today"
+has exactly one place to look.
+
+## Handoff Schema
+
+```
+ExecutiveGrantAdvisor
+ ├─ reads: ApplicationTracker.md, AuditLogging.md (Hunter digests), Metrics.md
+ └─ output: founder-facing priority view (no writes — read-only synthesis)
+```
