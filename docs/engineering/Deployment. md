@@ -1,0 +1,64 @@
+# Deployment
+
+**Status:** Draft — founder review required
+**Phase:** 6 — Engineering
+
+## Purpose
+
+Defines how GrantAI actually gets deployed and, critically, how Grant
+Hunter's schedule is implemented — the piece every prior phase has referred
+to but deferred to here.
+
+## Deployment Pattern
+
+Follows the existing BAE pattern: Lovable-built frontend, Supabase backend,
+deployed via the standard portfolio pipeline. No new infrastructure
+pattern introduced for this module.
+
+## Grant Hunter's Trigger Mechanism
+
+Recommend a GitHub Actions scheduled workflow, mirroring the existing
+`sync-agents.yml` pattern already used elsewhere in the BAE portfolio for
+propagation jobs — same tooling, different job:
+
+```yaml
+name: grant-hunter-sweep
+on:
+  schedule:
+    - cron: "0 13 * * *"   # daily, adjust per FundingOrganizations.md cadence
+  workflow_dispatch: {}     # allows manual trigger, matching GrantHunter-Agent.md
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Hunter run
+        run: |
+          curl -X POST "$HUNTER_RUN_ENDPOINT" \
+            -H "Authorization: Bearer ${{ secrets.SERVICE_ROLE_KEY }}"
+```
+
+This hits the `POST /hunter/run` endpoint defined in `API.md` using the
+service-role credential — the same credential that's structurally barred
+from Tier 4 actions per `Security.md`, so even a misconfigured or
+compromised workflow run can't submit anything on its own.
+
+## Environments
+
+- **Production** — real sources, real business profile data, real drafts
+- **Test** — separate Supabase branch/project per `Testing.md`, used for
+  Hunter dry runs and CI
+
+## Cadence Note
+
+The cron schedule above should match the "Update cadence" column already
+recorded per-source in `FundingOrganizations.md` rather than running every
+source at the same frequency — daily for Federal/State, weekly (or a
+separate workflow) for Corporate/Foundation once those categories have
+approved sources.
+
+## Open Decisions
+
+- [ ] Exact cron cadence per source category — needs `FundingOrganizations.md`
+  sources actually activated first
+- [ ] Notification path for the digest — email via Resend (matching the
+  rest of the portfolio's pattern), in-app, or both
