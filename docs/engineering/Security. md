@@ -1,0 +1,49 @@
+# Security
+
+**Status:** Draft — founder review required
+**Phase:** 6 — Engineering
+
+## Purpose
+
+Documents how GrantAI enforces its governance rules (Tier 3/4 restrictions
+from `GOVERNANCE.md`) as actual technical controls, not just process
+convention.
+
+## Principles
+
+1. **Tier boundaries are enforced in the database, not just in agent
+   prompts.** An agent "knowing" it shouldn't submit an application is not
+   sufficient — row-level security policies on `applications.submitted_date`
+   and `funding_organizations.status` make it structurally impossible for
+   the service-role credential to write those fields, per
+   `DatabaseSchema.md`.
+2. **Separate credentials for separate trust levels.** Service-role key
+   (agents, scheduled jobs) vs. founder session auth (frontend, human
+   actions) are never the same credential — see `API.md`.
+3. **No credentials in agent context.** Per the existing Anthropic-API
+   pattern used across BAE apps, API keys are never passed into the agent
+   prompt/context; they're handled at the request layer.
+
+## Data Sensitivity
+
+- Business profile data (`business_profiles` table) is internal financial
+  information about the business(es) GrantAI serves — treat with the same
+  care as any other financial data in the BAE portfolio, restricted to
+  founder-authenticated access
+- Grant application drafts may contain sensitive business detail before
+  they're ever submitted — draft content should not be publicly readable
+  even if other parts of the app are
+
+## Source Sweep Safety
+
+Grant Hunter reaches out to external funding-source websites/APIs on a
+schedule. Standard web-scraping/API-hygiene practices apply: respect
+rate limits and terms of service for each source in
+`FundingOrganizations.md`, and treat a source blocking or rate-limiting
+Hunter as a failure to surface in the run digest (`AuditLogging.md`), not
+something to route around.
+
+## Open Decisions
+
+- [ ] Confirm RLS policy specifics once Supabase project scope (shared vs.
+  dedicated) is decided in `Architecture.md`
