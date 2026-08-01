@@ -1,0 +1,65 @@
+# GrantAI — Roadmap
+
+**Status:** Draft — founder review required
+
+## Sequencing Logic
+
+Phases are ordered so each one only depends on what's already built:
+agents (Phase 2) need governance to exist first (Phase 1); the knowledge
+base (Phase 3) has to exist before the intelligence engine (Phase 4) has
+anything to score; the intelligence engine has to exist before the
+application system (Phase 5) can be triggered by it; engineering (Phase 6)
+formalizes what phases 1–5 defined conceptually; operations (Phase 7) governs
+the whole system once it's live.
+
+Grant Hunter is intentionally **not** its own phase — it's an enhancement
+layer that sits on top of Phases 2–5 once they exist (an agent that calls the
+knowledge base, intelligence engine, and application system on a schedule
+instead of on-demand). It gets its own agent spec in Phase 2 but can't
+actually run until Phases 3–5 are functional.
+
+## Phase 1 — Foundation ✅ (this delivery)
+`README.md`, `GOVERNANCE.md`, `MISSION.md`, `VISION.md`, `ROADMAP.md`
+
+## Phase 2 — AI Agent Specifications
+- `GrantFinder-Agent.md` — searches sources, surfaces candidates
+- `GrantWriter-Agent.md` — drafts proposal narrative
+- `GrantReviewer-Agent.md` — QA pass on drafts against funder requirements
+- `GrantResearch-Agent.md` — deep-dives a specific funder/opportunity
+- `GrantCompliance-Agent.md` — checks eligibility rules, flags legal/reporting obligations
+- `ExecutiveGrantAdvisor-Agent.md` — founder-facing summary/recommendation layer
+- `GrantHunter-Agent.md` — the autonomous scheduled-sweep agent (flagship enhancement)
+
+## Phase 3 — Knowledge Base
+`GrantKnowledge.md`, `FundingOrganizations.md` (the Tier-3 approved source
+allow-list Grant Hunter is restricted to), `FederalGrants.md`,
+`StateGrants.md`, `CorporateGrants.md`, `FoundationGrants.md`
+
+## Phase 4 — Intelligence Engine
+`EligibilityEngine.md`, `MatchingAlgorithm.md`, `ScoringSystem.md`,
+`DocumentGeneration.md`, `AutomationWorkflow.md` — this is where Grant
+Hunter's scoring threshold and "draft-worthy" logic actually get defined.
+
+## Phase 5 — Application System
+`ProposalTemplates.md`, `BusinessProfiles.md`, `BudgetTemplates.md`,
+`CommercializationPlans.md`, `ApplicationTracker.md`
+
+## Phase 6 — Engineering
+`Architecture.md`, `DatabaseSchema.md`, `API.md`, `Security.md`,
+`Testing.md`, `Deployment.md` — this is where Grant Hunter's actual
+schedule/trigger mechanism (cron, GitHub Action, etc.) gets specified,
+following the same pattern as `sync-agents.yml` elsewhere in the BAE
+portfolio.
+
+## Phase 7 — Operations
+`StandardOperatingProcedures.md`, `QualityControl.md`,
+`ContinuousLearning.md` (where Grant Hunter's win/loss feedback loop lives),
+`AuditLogging.md` (where Grant Hunter's per-run digest log lives),
+`Metrics.md`
+
+## Immediate Next Step
+Phase 2 agent specs, starting with `GrantHunter-Agent.md` since it's the
+flagship differentiator — recommend building it first even though it's
+listed last in Phase 2, so its requirements can inform
+`FundingOrganizations.md` (Phase 3) and `ScoringSystem.md` (Phase 4) while
+they're being drafted rather than retrofitted later.
