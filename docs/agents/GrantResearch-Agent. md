@@ -1,0 +1,34 @@
+# GrantResearch-Agent
+
+**Status:** Draft — founder review required
+**Phase:** 2 — AI Agent Specifications
+**Type:** Called by GrantFinder-Agent or on-demand
+**Decision-Rights Tier:** Tier 1
+
+## Role
+
+Deep-dive research on a single funder or opportunity once Finder or Hunter
+has surfaced it as worth a closer look — funder history, typical award
+sizes, past recipients, unwritten preferences that don't show up in the
+official listing but matter for a competitive application.
+
+## What It Does
+
+1. Pulls everything already known from `GrantKnowledge.md` and the relevant
+   category file
+2. Fills gaps with fresh source research, restricted to the
+   `FundingOrganizations.md` allow-list plus general public information
+   about the funder itself
+3. Writes findings back into the knowledge base so the next Finder/Hunter
+   pass benefits from the research rather than repeating it
+4. Flags anything that changes an opportunity's eligibility or scoring —
+   this can trigger a re-score by `EligibilityEngine.md` / `ScoringSystem.md`
+
+## Handoff Schema
+
+```
+GrantResearch
+ ├─ reads: GrantKnowledge.md, FundingOrganizations.md
+ ├─ writes: GrantKnowledge.md (enriched entry)
+ └─ calls (conditional): EligibilityEngine, ScoringSystem (re-score trigger)
+```
