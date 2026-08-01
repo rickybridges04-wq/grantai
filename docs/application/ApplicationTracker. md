@@ -1,0 +1,58 @@
+# ApplicationTracker
+
+**Status:** Draft — founder review required
+**Phase:** 5 — Application System
+
+## Purpose
+
+The single tracking record for every application GrantAI has ever drafted
+or the founder has pursued — the file every other component reads from or
+writes to when an opportunity moves from "opportunity" to "application in
+progress." This is what `ExecutiveGrantAdvisor-Agent` reads to build its
+priority view, and what `GrantHunter-Agent` checks before starting a new
+draft (to avoid duplicating an existing one).
+
+## Record Schema
+
+```
+- Opportunity name: (matches the entry in FederalGrants.md / etc.)
+- Business: (which BusinessProfiles.md entry this is for)
+- Status: draft → review-passed / review-failed → founder-review →
+  submitted → awarded / declined / withdrawn
+- Fit score: (from ScoringSystem.md at time of drafting)
+- Deadline:
+- Drafted by: (GrantWriter-Agent, on-demand or Hunter-triggered)
+- Reviewed by: (GrantReviewer-Agent — pass/fail notes)
+- Compliance notes: (from GrantCompliance-Agent)
+- Founder decision: (pending / approved to submit / declined / revise)
+- Submitted date: (blank until founder actually submits — Tier 4 action,
+  never set by any agent)
+- Outcome: (blank until known)
+- Last updated:
+```
+
+## Status Flow
+
+```
+draft → review-passed/review-failed → founder-review
+     → [founder submits externally, then marks: submitted]
+     → awarded / declined / withdrawn
+```
+
+Note the gap between `founder-review` and `submitted` — no agent moves an
+entry into `submitted` status. Only the founder does, after actually
+submitting the application through the funder's own process. This tracker
+records reality; it doesn't cause it.
+
+## Feeds
+
+- `ExecutiveGrantAdvisor-Agent` — priority view of what needs attention
+- `ContinuousLearning.md` (Phase 7) — outcome data (awarded/declined) feeds
+  back into scoring calibration
+- `Metrics.md` (Phase 7) — aggregate stats (applications drafted, win rate,
+  total funding pursued/awarded)
+
+## Open Decisions
+
+- [ ] Confirm how "outcome" gets recorded — manual founder update, or does
+  Grant Hunter periodically check funder sites for award announcements?
