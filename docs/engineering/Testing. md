@@ -1,0 +1,47 @@
+# Testing
+
+**Status:** Draft — founder review required
+**Phase:** 6 — Engineering
+
+## Purpose
+
+Defines how GrantAI's components get verified before and after deployment,
+with particular emphasis on the two things a failure here is most costly
+for: Grant Hunter running unattended, and the Tier 4 submission boundary
+never being crossed by mistake.
+
+## Test Categories
+
+**Unit-level**
+- `EligibilityEngine.md` logic against known eligible/ineligible fixture
+  cases
+- `ScoringSystem.md` scoring math against hand-calculated expected scores
+- Schema validation for every table in `DatabaseSchema.md`
+
+**Integration-level**
+- Full pipeline dry run: a fixture opportunity moves through Eligibility →
+  Matching → Scoring → (conditionally) Writer → Reviewer → Tracker, and
+  every intermediate state is asserted
+- Hunter run against a mocked source, confirming a digest is produced even
+  on a zero-result run (per the "silence is not acceptable" rule in
+  `GrantHunter-Agent.md`)
+
+**Security-critical (highest priority)**
+- Explicit test asserting the service-role credential *cannot* write
+  `applications.submitted_date` or flip `funding_organizations.status` to
+  active — this should be a standing regression test, run on every deploy,
+  not a one-time check
+- Test that a source sweep failure (site down, rate-limited) surfaces as an
+  explicit error in the digest rather than silently returning zero results
+
+## Definition of Done (per BAEOS Vol 02 standard)
+
+Evidence-based — a component isn't "done" because an agent reports it
+working, it's done when its test category above passes and the result is
+logged, consistent with BAEOS's Truth Standard (fabricated pass results
+score worse than an honest failure).
+
+## Open Decisions
+
+- [ ] Test environment — separate Supabase project/branch for testing vs.
+  production, so Hunter test runs don't pollute real opportunity data
