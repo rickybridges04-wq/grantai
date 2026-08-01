@@ -1,0 +1,27 @@
+# GrantAI — Vision
+
+GrantAI matures in three stages:
+
+## Stage 1 — Grant Writing Assistant
+A tool you point at a specific opportunity to help research and draft a
+proposal. Human-initiated, single-grant-at-a-time.
+
+## Stage 2 — Grant Intelligence Operating System
+A standing system with its own knowledge base, scoring engine, and
+specialized agents (Finder, Writer, Reviewer, Researcher, Compliance,
+Executive Advisor) that can be pointed at a business profile and asked "what
+should we pursue this quarter?"
+
+## Stage 3 — Virtual Grant Department (Grant Hunter online)
+The system stops waiting to be asked. It watches its approved sources on a
+schedule, surfaces new opportunities as they appear, scores and ranks them
+automatically, and has draft applications ready for review by the time a
+human would have found the opportunity manually. At this stage GrantAI
+functions less like software and more like a standing department — one that
+never sleeps, never gets tired of checking a source for the tenth time, and
+never submits anything without sign-off.
+
+The long-term vision is for GrantAI to become one of BAE's Platform
+Capability Modules (BAEOS Vol 12) — usable not just internally for BHI, but
+potentially offered as its own product to other small businesses and
+contractors facing the same grant-discovery bottleneck.
