@@ -44,3 +44,13 @@ Same trigger clause as the rest of the BAE portfolio: saying "AGENTS.md —
 go to work" loads full context and runs a 5-pass QA sweep, auto-committing
 a dated report to `docs/audits/` plus a rollup line in `docs/AUDIT_LOG.md`.
 Tier 3/4 findings still require founder approval before any fix executes.
+
+## External Modules
+
+### → partnerai
+Repo: https://github.com/rickybridges04-wq/Partnerai
+
+GrantAI's ExecutiveGrantAdvisor may call PartnerAI's StrategyAdvisor
+to check portfolio-priority scoring before drafting an application.
+Shared Supabase tables: portfolio_apps, funding_opportunities,
+shared_handoff_log.
